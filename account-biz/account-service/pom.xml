@@ -52,6 +52,7 @@
                             <dependency>
                                 <groupId>com.itfsw</groupId>
                                 <artifactId>mybatis-generator-plugin</artifactId>
+                                <version>${itfsw-mybatis-generator-plugin.version}</version>
                             </dependency>
                         </dependencies>
                     </plugin>
