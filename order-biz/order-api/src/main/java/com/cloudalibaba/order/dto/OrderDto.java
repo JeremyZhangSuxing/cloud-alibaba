@@ -1,4 +1,4 @@
-package com.alibaba.order.dto;
+package com.cloudalibaba.order.dto;
 
 import lombok.Data;
 

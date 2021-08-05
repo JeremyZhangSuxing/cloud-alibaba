@@ -1,4 +1,4 @@
-package com.alibaba.order.vo;
+package com.cloudalibaba.order.dto;
 
 import lombok.Data;
 
@@ -7,5 +7,5 @@ import lombok.Data;
  * @date : 2021/8/5 5:48 下午
  */
 @Data
-public class OrderVo {
+public class ProductDto {
 }

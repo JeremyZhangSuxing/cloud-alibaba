@@ -1,4 +1,4 @@
-package com.clouldalibaba.product.service;
+package com.cloudalibaba.product.service;
 
 /**
  * @author : Knight

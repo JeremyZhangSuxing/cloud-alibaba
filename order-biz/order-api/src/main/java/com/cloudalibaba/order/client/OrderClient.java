@@ -1,4 +1,4 @@
-package com.alibaba.order;
+package com.cloudalibaba.order.client;
 
 /**
  * @author : Knight

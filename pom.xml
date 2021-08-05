@@ -12,6 +12,7 @@
         <module>account-biz</module>
         <module>order-biz</module>
         <module>product-biz</module>
+        <module>cloud-common</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
