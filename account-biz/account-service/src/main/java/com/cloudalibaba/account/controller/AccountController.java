@@ -6,14 +6,8 @@ import com.cloudalibaba.account.mybatis.mapper.AccountMapper;
 import com.cloudalibaba.account.mybatis.po.Account;
 import com.cloudalibaba.account.vo.AccountVo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.BeanUtils;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,8 +28,12 @@ public class AccountController {
     }
 
     @GetMapping("/account/{accountCode}")
-    public AccountVo queryById(@PathVariable Long accountCode) {
-        return null;
+    public AccountVo queryById(@PathVariable String accountCode) {
+        AccountExample example = new AccountExample();
+        Account account = accountMapper.selectOneByExample(example.createCriteria().andAccountCodeEqualTo(accountCode).example());
+        AccountVo accountVo = new AccountVo();
+        BeanUtils.copyProperties(account,accountVo);
+        return accountVo;
     }
 
     @PutMapping("/account")

@@ -11,5 +11,11 @@
 
     <artifactId>product-service</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.omen.springcloud</groupId>
+            <artifactId>product-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>
