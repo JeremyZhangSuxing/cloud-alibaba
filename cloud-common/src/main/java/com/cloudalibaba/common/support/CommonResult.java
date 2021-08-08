@@ -16,12 +16,7 @@ public class CommonResult<T> {
     private String message;
     private T data;
 
-    public CommonResult(Integer code, String message) {
-        this(code, message, null);
-    }
-
-    public static <T> CommonResult success(T data) {
-        CommonResult commonResult = new CommonResult(0, "success", data);
-        return commonResult;
+    public static <T> CommonResult<T> success(T data) {
+        return new CommonResult<>(0, "success", data);
     }
 }
