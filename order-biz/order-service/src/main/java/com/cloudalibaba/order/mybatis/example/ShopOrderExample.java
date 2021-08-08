@@ -1,10 +1,10 @@
-package com.cloudalibaba.account.mybatis.example;
+package com.cloudalibaba.order.mybatis.example;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductExample {
+public class ShopOrderExample {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -15,7 +15,7 @@ public class ProductExample {
 
     protected Integer rows;
 
-    public ProductExample() {
+    public ShopOrderExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -49,12 +49,12 @@ public class ProductExample {
         return criteria;
     }
 
-    public ProductExample orderBy(String orderByClause) {
+    public ShopOrderExample orderBy(String orderByClause) {
         this.setOrderByClause(orderByClause);
         return this;
     }
 
-    public ProductExample orderBy(String ... orderByClauses) {
+    public ShopOrderExample orderBy(String ... orderByClauses) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < orderByClauses.length; i++) {
             sb.append(orderByClauses[i]);
@@ -88,18 +88,18 @@ public class ProductExample {
     }
 
     public static Criteria newAndCreateCriteria() {
-        ProductExample example = new ProductExample();
+        ShopOrderExample example = new ShopOrderExample();
         return example.createCriteria();
     }
 
-    public ProductExample when(boolean condition, IExampleWhen then) {
+    public ShopOrderExample when(boolean condition, IExampleWhen then) {
         if (condition) {
             then.example(this);
         }
         return this;
     }
 
-    public ProductExample when(boolean condition, IExampleWhen then, IExampleWhen otherwise) {
+    public ShopOrderExample when(boolean condition, IExampleWhen then, IExampleWhen otherwise) {
         if (condition) {
             then.example(this);
         } else {
@@ -124,18 +124,18 @@ public class ProductExample {
         return this.rows;
     }
 
-    public ProductExample limit(Integer rows) {
+    public ShopOrderExample limit(Integer rows) {
         this.rows = rows;
         return this;
     }
 
-    public ProductExample limit(Integer offset, Integer rows) {
+    public ShopOrderExample limit(Integer offset, Integer rows) {
         this.offset = offset;
         this.rows = rows;
         return this;
     }
 
-    public ProductExample page(Integer page, Integer pageSize) {
+    public ShopOrderExample page(Integer page, Integer pageSize) {
         this.offset = page * pageSize;
         this.rows = pageSize;
         return this;
@@ -242,6 +242,146 @@ public class ProductExample {
             return (Criteria) this;
         }
 
+        public Criteria andOrderNoIsNull() {
+            addCriterion("ORDER_NO is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNoIsNotNull() {
+            addCriterion("ORDER_NO is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNoEqualTo(String value) {
+            addCriterion("ORDER_NO =", value, "orderNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNoNotEqualTo(String value) {
+            addCriterion("ORDER_NO <>", value, "orderNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNoGreaterThan(String value) {
+            addCriterion("ORDER_NO >", value, "orderNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNoGreaterThanOrEqualTo(String value) {
+            addCriterion("ORDER_NO >=", value, "orderNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNoLessThan(String value) {
+            addCriterion("ORDER_NO <", value, "orderNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNoLessThanOrEqualTo(String value) {
+            addCriterion("ORDER_NO <=", value, "orderNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNoLike(String value) {
+            addCriterion("ORDER_NO like", value, "orderNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNoNotLike(String value) {
+            addCriterion("ORDER_NO not like", value, "orderNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNoIn(List<String> values) {
+            addCriterion("ORDER_NO in", values, "orderNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNoNotIn(List<String> values) {
+            addCriterion("ORDER_NO not in", values, "orderNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNoBetween(String value1, String value2) {
+            addCriterion("ORDER_NO between", value1, value2, "orderNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andOrderNoNotBetween(String value1, String value2) {
+            addCriterion("ORDER_NO not between", value1, value2, "orderNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountCodeIsNull() {
+            addCriterion("ACCOUNT_CODE is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountCodeIsNotNull() {
+            addCriterion("ACCOUNT_CODE is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountCodeEqualTo(String value) {
+            addCriterion("ACCOUNT_CODE =", value, "accountCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountCodeNotEqualTo(String value) {
+            addCriterion("ACCOUNT_CODE <>", value, "accountCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountCodeGreaterThan(String value) {
+            addCriterion("ACCOUNT_CODE >", value, "accountCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountCodeGreaterThanOrEqualTo(String value) {
+            addCriterion("ACCOUNT_CODE >=", value, "accountCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountCodeLessThan(String value) {
+            addCriterion("ACCOUNT_CODE <", value, "accountCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountCodeLessThanOrEqualTo(String value) {
+            addCriterion("ACCOUNT_CODE <=", value, "accountCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountCodeLike(String value) {
+            addCriterion("ACCOUNT_CODE like", value, "accountCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountCodeNotLike(String value) {
+            addCriterion("ACCOUNT_CODE not like", value, "accountCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountCodeIn(List<String> values) {
+            addCriterion("ACCOUNT_CODE in", values, "accountCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountCodeNotIn(List<String> values) {
+            addCriterion("ACCOUNT_CODE not in", values, "accountCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountCodeBetween(String value1, String value2) {
+            addCriterion("ACCOUNT_CODE between", value1, value2, "accountCode");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountCodeNotBetween(String value1, String value2) {
+            addCriterion("ACCOUNT_CODE not between", value1, value2, "accountCode");
+            return (Criteria) this;
+        }
+
         public Criteria andProductCodeIsNull() {
             addCriterion("PRODUCT_CODE is null");
             return (Criteria) this;
@@ -312,76 +452,6 @@ public class ProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andProductNameIsNull() {
-            addCriterion("PRODUCT_NAME is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductNameIsNotNull() {
-            addCriterion("PRODUCT_NAME is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductNameEqualTo(String value) {
-            addCriterion("PRODUCT_NAME =", value, "productName");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductNameNotEqualTo(String value) {
-            addCriterion("PRODUCT_NAME <>", value, "productName");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductNameGreaterThan(String value) {
-            addCriterion("PRODUCT_NAME >", value, "productName");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductNameGreaterThanOrEqualTo(String value) {
-            addCriterion("PRODUCT_NAME >=", value, "productName");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductNameLessThan(String value) {
-            addCriterion("PRODUCT_NAME <", value, "productName");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductNameLessThanOrEqualTo(String value) {
-            addCriterion("PRODUCT_NAME <=", value, "productName");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductNameLike(String value) {
-            addCriterion("PRODUCT_NAME like", value, "productName");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductNameNotLike(String value) {
-            addCriterion("PRODUCT_NAME not like", value, "productName");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductNameIn(List<String> values) {
-            addCriterion("PRODUCT_NAME in", values, "productName");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductNameNotIn(List<String> values) {
-            addCriterion("PRODUCT_NAME not in", values, "productName");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductNameBetween(String value1, String value2) {
-            addCriterion("PRODUCT_NAME between", value1, value2, "productName");
-            return (Criteria) this;
-        }
-
-        public Criteria andProductNameNotBetween(String value1, String value2) {
-            addCriterion("PRODUCT_NAME not between", value1, value2, "productName");
-            return (Criteria) this;
-        }
-
         public Criteria andCountIsNull() {
             addCriterion("COUNT is null");
             return (Criteria) this;
@@ -442,63 +512,63 @@ public class ProductExample {
             return (Criteria) this;
         }
 
-        public Criteria andPriceIsNull() {
-            addCriterion("PRICE is null");
+        public Criteria andAmountIsNull() {
+            addCriterion("AMOUNT is null");
             return (Criteria) this;
         }
 
-        public Criteria andPriceIsNotNull() {
-            addCriterion("PRICE is not null");
+        public Criteria andAmountIsNotNull() {
+            addCriterion("AMOUNT is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPriceEqualTo(BigDecimal value) {
-            addCriterion("PRICE =", value, "price");
+        public Criteria andAmountEqualTo(BigDecimal value) {
+            addCriterion("AMOUNT =", value, "amount");
             return (Criteria) this;
         }
 
-        public Criteria andPriceNotEqualTo(BigDecimal value) {
-            addCriterion("PRICE <>", value, "price");
+        public Criteria andAmountNotEqualTo(BigDecimal value) {
+            addCriterion("AMOUNT <>", value, "amount");
             return (Criteria) this;
         }
 
-        public Criteria andPriceGreaterThan(BigDecimal value) {
-            addCriterion("PRICE >", value, "price");
+        public Criteria andAmountGreaterThan(BigDecimal value) {
+            addCriterion("AMOUNT >", value, "amount");
             return (Criteria) this;
         }
 
-        public Criteria andPriceGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("PRICE >=", value, "price");
+        public Criteria andAmountGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("AMOUNT >=", value, "amount");
             return (Criteria) this;
         }
 
-        public Criteria andPriceLessThan(BigDecimal value) {
-            addCriterion("PRICE <", value, "price");
+        public Criteria andAmountLessThan(BigDecimal value) {
+            addCriterion("AMOUNT <", value, "amount");
             return (Criteria) this;
         }
 
-        public Criteria andPriceLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("PRICE <=", value, "price");
+        public Criteria andAmountLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("AMOUNT <=", value, "amount");
             return (Criteria) this;
         }
 
-        public Criteria andPriceIn(List<BigDecimal> values) {
-            addCriterion("PRICE in", values, "price");
+        public Criteria andAmountIn(List<BigDecimal> values) {
+            addCriterion("AMOUNT in", values, "amount");
             return (Criteria) this;
         }
 
-        public Criteria andPriceNotIn(List<BigDecimal> values) {
-            addCriterion("PRICE not in", values, "price");
+        public Criteria andAmountNotIn(List<BigDecimal> values) {
+            addCriterion("AMOUNT not in", values, "amount");
             return (Criteria) this;
         }
 
-        public Criteria andPriceBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("PRICE between", value1, value2, "price");
+        public Criteria andAmountBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("AMOUNT between", value1, value2, "amount");
             return (Criteria) this;
         }
 
-        public Criteria andPriceNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("PRICE not between", value1, value2, "price");
+        public Criteria andAmountNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("AMOUNT not between", value1, value2, "amount");
             return (Criteria) this;
         }
 
@@ -564,14 +634,14 @@ public class ProductExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
-        private ProductExample example;
+        private ShopOrderExample example;
 
-        protected Criteria(ProductExample example) {
+        protected Criteria(ShopOrderExample example) {
             super();
             this.example = example;
         }
 
-        public ProductExample example() {
+        public ShopOrderExample example() {
             return this.example;
         }
 
@@ -696,6 +766,6 @@ public class ProductExample {
     }
 
     public interface IExampleWhen {
-        void example(com.cloudalibaba.account.mybatis.example.ProductExample example);
+        void example(com.cloudalibaba.order.mybatis.example.ShopOrderExample example);
     }
 }

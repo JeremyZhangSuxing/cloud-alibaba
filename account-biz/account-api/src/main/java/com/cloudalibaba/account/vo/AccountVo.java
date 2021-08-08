@@ -1,8 +1,10 @@
 package com.cloudalibaba.account.vo;
 
+import com.cloudalibaba.order.vo.OrderVo;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @author : Knight
@@ -29,4 +31,6 @@ public class AccountVo {
      *
      */
     private BigDecimal amount;
+
+    private List<OrderVo> orders;
 }

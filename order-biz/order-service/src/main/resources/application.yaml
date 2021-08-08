@@ -6,10 +6,10 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8084
-        register-enabled: false
-        watch:
-          enabled: false
+        server-addr: 122.51.171.126:8848
+#        register-enabled: false
+#        watch:
+#          enabled: false
 
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -22,3 +22,6 @@ spring:
 
 mybatis:
   mapper-locations: classpath*:config/mybatis/mapper/**/*.xml
+logging:
+  level:
+     com.cloudalibaba.order.mybatis.mapper : debug

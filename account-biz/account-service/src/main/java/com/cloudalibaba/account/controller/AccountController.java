@@ -4,6 +4,7 @@ import com.cloudalibaba.account.dto.AccountDto;
 import com.cloudalibaba.account.mybatis.example.AccountExample;
 import com.cloudalibaba.account.mybatis.mapper.AccountMapper;
 import com.cloudalibaba.account.mybatis.po.Account;
+import com.cloudalibaba.account.service.AccountService;
 import com.cloudalibaba.account.vo.AccountVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
@@ -20,6 +21,7 @@ import java.util.List;
 @RequestMapping("/api/v1")
 public class AccountController {
     private final AccountMapper accountMapper;
+    private final AccountService accountService;
 
     @GetMapping("/accounts")
     public List<Account> listAccount() {
@@ -32,7 +34,8 @@ public class AccountController {
         AccountExample example = new AccountExample();
         Account account = accountMapper.selectOneByExample(example.createCriteria().andAccountCodeEqualTo(accountCode).example());
         AccountVo accountVo = new AccountVo();
-        BeanUtils.copyProperties(account,accountVo);
+        BeanUtils.copyProperties(account, accountVo);
+        accountVo.setOrders(accountService.getOrderSByAccountCode(accountCode));
         return accountVo;
     }
 

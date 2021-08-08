@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cloudalibaba.account.mybatis.mapper.ProductMapper">
-  <resultMap id="BaseResultMap" type="com.cloudalibaba.account.mybatis.po.Product">
+<mapper namespace="com.cloudalibaba.order.mybatis.mapper.ShopOrderMapper">
+  <resultMap id="BaseResultMap" type="com.cloudalibaba.order.mybatis.po.ShopOrder">
     <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="ORDER_NO" jdbcType="VARCHAR" property="orderNo" />
+    <result column="ACCOUNT_CODE" jdbcType="VARCHAR" property="accountCode" />
     <result column="PRODUCT_CODE" jdbcType="VARCHAR" property="productCode" />
-    <result column="PRODUCT_NAME" jdbcType="VARCHAR" property="productName" />
     <result column="COUNT" jdbcType="INTEGER" property="count" />
-    <result column="PRICE" jdbcType="DECIMAL" property="price" />
+    <result column="AMOUNT" jdbcType="DECIMAL" property="amount" />
     <result column="is_deleted" jdbcType="BIT" property="deleted" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -68,15 +69,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ID, PRODUCT_CODE, PRODUCT_NAME, COUNT, PRICE, is_deleted
+    ID, ORDER_NO, ACCOUNT_CODE, PRODUCT_CODE, COUNT, AMOUNT, is_deleted
   </sql>
-  <select id="selectByExample" parameterType="com.cloudalibaba.account.mybatis.example.ProductExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.cloudalibaba.order.mybatis.example.ShopOrderExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from product
+    from shop_order
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -92,13 +93,13 @@
       </if>
     </if>
   </select>
-  <select id="selectByExampleForUpdate" parameterType="com.cloudalibaba.account.mybatis.example.ProductExample" resultMap="BaseResultMap">
+  <select id="selectByExampleForUpdate" parameterType="com.cloudalibaba.order.mybatis.example.ShopOrderExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from product
+    from shop_order
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -121,7 +122,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from product
+    from shop_order
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -135,98 +136,107 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from product
+    from shop_order
     where ID = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectByPrimaryKeyForUpdate" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from product
+    from shop_order
     where ID = #{id,jdbcType=INTEGER}
     for update
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from product
+    delete from shop_order
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.cloudalibaba.account.mybatis.example.ProductExample">
-    delete from product
+  <delete id="deleteByExample" parameterType="com.cloudalibaba.order.mybatis.example.ShopOrderExample">
+    delete from shop_order
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.cloudalibaba.account.mybatis.po.Product">
+  <insert id="insert" parameterType="com.cloudalibaba.order.mybatis.po.ShopOrder">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into product (PRODUCT_CODE, PRODUCT_NAME, COUNT, 
-      PRICE, is_deleted)
-    values (#{productCode,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER}, 
-      #{price,jdbcType=DECIMAL}, #{deleted,jdbcType=BIT})
+    insert into shop_order (ORDER_NO, ACCOUNT_CODE, PRODUCT_CODE, 
+      COUNT, AMOUNT, is_deleted)
+    values (#{orderNo,jdbcType=VARCHAR}, #{accountCode,jdbcType=VARCHAR}, #{productCode,jdbcType=VARCHAR}, 
+      #{count,jdbcType=INTEGER}, #{amount,jdbcType=DECIMAL}, #{deleted,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.cloudalibaba.account.mybatis.po.Product">
+  <insert id="insertSelective" parameterType="com.cloudalibaba.order.mybatis.po.ShopOrder">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into product
+    insert into shop_order
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderNo != null">
+        ORDER_NO,
+      </if>
+      <if test="accountCode != null">
+        ACCOUNT_CODE,
+      </if>
       <if test="productCode != null">
         PRODUCT_CODE,
-      </if>
-      <if test="productName != null">
-        PRODUCT_NAME,
       </if>
       <if test="count != null">
         COUNT,
       </if>
-      <if test="price != null">
-        PRICE,
+      <if test="amount != null">
+        AMOUNT,
       </if>
       <if test="deleted != null">
         is_deleted,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCode != null">
+        #{accountCode,jdbcType=VARCHAR},
+      </if>
       <if test="productCode != null">
         #{productCode,jdbcType=VARCHAR},
-      </if>
-      <if test="productName != null">
-        #{productName,jdbcType=VARCHAR},
       </if>
       <if test="count != null">
         #{count,jdbcType=INTEGER},
       </if>
-      <if test="price != null">
-        #{price,jdbcType=DECIMAL},
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
       </if>
       <if test="deleted != null">
         #{deleted,jdbcType=BIT},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.cloudalibaba.account.mybatis.example.ProductExample" resultType="java.lang.Long">
-    select count(*) from product
+  <select id="countByExample" parameterType="com.cloudalibaba.order.mybatis.example.ShopOrderExample" resultType="java.lang.Long">
+    select count(*) from shop_order
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update product
+    update shop_order
     <set>
       <if test="record.id != null">
         ID = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.orderNo != null">
+        ORDER_NO = #{record.orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountCode != null">
+        ACCOUNT_CODE = #{record.accountCode,jdbcType=VARCHAR},
+      </if>
       <if test="record.productCode != null">
         PRODUCT_CODE = #{record.productCode,jdbcType=VARCHAR},
-      </if>
-      <if test="record.productName != null">
-        PRODUCT_NAME = #{record.productName,jdbcType=VARCHAR},
       </if>
       <if test="record.count != null">
         COUNT = #{record.count,jdbcType=INTEGER},
       </if>
-      <if test="record.price != null">
-        PRICE = #{record.price,jdbcType=DECIMAL},
+      <if test="record.amount != null">
+        AMOUNT = #{record.amount,jdbcType=DECIMAL},
       </if>
       <if test="record.deleted != null">
         is_deleted = #{record.deleted,jdbcType=BIT},
@@ -237,31 +247,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update product
+    update shop_order
     set ID = #{record.id,jdbcType=INTEGER},
+      ORDER_NO = #{record.orderNo,jdbcType=VARCHAR},
+      ACCOUNT_CODE = #{record.accountCode,jdbcType=VARCHAR},
       PRODUCT_CODE = #{record.productCode,jdbcType=VARCHAR},
-      PRODUCT_NAME = #{record.productName,jdbcType=VARCHAR},
       COUNT = #{record.count,jdbcType=INTEGER},
-      PRICE = #{record.price,jdbcType=DECIMAL},
+      AMOUNT = #{record.amount,jdbcType=DECIMAL},
       is_deleted = #{record.deleted,jdbcType=BIT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cloudalibaba.account.mybatis.po.Product">
-    update product
+  <update id="updateByPrimaryKeySelective" parameterType="com.cloudalibaba.order.mybatis.po.ShopOrder">
+    update shop_order
     <set>
+      <if test="orderNo != null">
+        ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCode != null">
+        ACCOUNT_CODE = #{accountCode,jdbcType=VARCHAR},
+      </if>
       <if test="productCode != null">
         PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
-      </if>
-      <if test="productName != null">
-        PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
       </if>
       <if test="count != null">
         COUNT = #{count,jdbcType=INTEGER},
       </if>
-      <if test="price != null">
-        PRICE = #{price,jdbcType=DECIMAL},
+      <if test="amount != null">
+        AMOUNT = #{amount,jdbcType=DECIMAL},
       </if>
       <if test="deleted != null">
         is_deleted = #{deleted,jdbcType=BIT},
@@ -269,19 +283,20 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.cloudalibaba.account.mybatis.po.Product">
-    update product
-    set PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
-      PRODUCT_NAME = #{productName,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.cloudalibaba.order.mybatis.po.ShopOrder">
+    update shop_order
+    set ORDER_NO = #{orderNo,jdbcType=VARCHAR},
+      ACCOUNT_CODE = #{accountCode,jdbcType=VARCHAR},
+      PRODUCT_CODE = #{productCode,jdbcType=VARCHAR},
       COUNT = #{count,jdbcType=INTEGER},
-      PRICE = #{price,jdbcType=DECIMAL},
+      AMOUNT = #{amount,jdbcType=DECIMAL},
       is_deleted = #{deleted,jdbcType=BIT}
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectOneByExample" parameterType="com.cloudalibaba.account.mybatis.example.ProductExample" resultMap="BaseResultMap">
+  <select id="selectOneByExample" parameterType="com.cloudalibaba.order.mybatis.example.ShopOrderExample" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from product
+    from shop_order
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -290,10 +305,10 @@
     </if>
     limit 1
   </select>
-  <select id="selectOneByExampleForUpdate" parameterType="com.cloudalibaba.account.mybatis.example.ProductExample" resultMap="BaseResultMap">
+  <select id="selectOneByExampleForUpdate" parameterType="com.cloudalibaba.order.mybatis.example.ShopOrderExample" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from product
+    from shop_order
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
