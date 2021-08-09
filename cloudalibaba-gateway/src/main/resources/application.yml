@@ -1,0 +1,26 @@
+server:
+  port: 9090
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 122.51.171.126:8848
+#        register-enabled: false
+#        watch:
+#          enabled: false
+      routes:
+      - id: product-service
+        uri: lb://product-service  # lb 开启负载均衡
+        predicates:
+          - Path=/product/**
+      - id: account-service
+        uri: lb://account-service
+        predicates:
+          - Path=/account/**
+      - id: order-service
+        uri: lb://order-service
+        predicates:
+          - Path=/order/**
+
+
+

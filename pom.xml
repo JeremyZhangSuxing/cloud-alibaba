@@ -13,6 +13,7 @@
         <module>order-biz</module>
         <module>product-biz</module>
         <module>cloud-common</module>
+        <module>cloudalibaba-gateway</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
