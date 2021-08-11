@@ -23,6 +23,10 @@ public class AccountController {
     private final AccountMapper accountMapper;
     private final AccountService accountService;
 
+    /**
+     * 通过网关进行请求转发时 按照配置的规则  http://localhost:8090/account-service/api/v1/account/javadaily
+     * @return
+     */
     @GetMapping("/accounts")
     public List<Account> listAccount() {
         AccountExample example = new AccountExample();
