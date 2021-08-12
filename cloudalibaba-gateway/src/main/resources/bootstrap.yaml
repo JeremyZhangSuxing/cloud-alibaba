@@ -3,7 +3,26 @@ spring:
     name: gateway-service
   cloud:
     nacos:
-      config:
+      discovery:
         server-addr: 122.51.171.126:8848
-        file-extension: yaml
-        namespace: 5621d23d-abe5-4fb9-9a09-d2148360adae
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: product-service
+        uri: lb://product-service
+        predicates:
+          - Path=/product/**
+      - id: account-service
+        uri: lb://account-service
+        predicates:
+          - Path=/api/**
+      - id: order-service
+        uri: lb://order-service
+        predicates:
+          - Path=/order/**
+server:
+  port: 8090
+
+
