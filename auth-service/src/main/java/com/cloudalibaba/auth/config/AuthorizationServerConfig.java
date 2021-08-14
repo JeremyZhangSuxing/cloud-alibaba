@@ -30,6 +30,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     private final SuperUserDerailServiceImpl userDetailService;
     private final AuthenticationManager authenticationManager;
     private final DataSource dataSource;
+    private final PasswordEncoder passwordEncoder;
 
     /**
      * access_token存储器
@@ -85,4 +86,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.withClientDetails(clientDetails());
     }
+
+//    @Override
+//    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+//        clients.inMemory().withClient("app").secret(this.passwordEncoder.encode("app"))
+//                .authorizedGrantTypes("password")
+//                .scopes("all");
+//    }
 }
+

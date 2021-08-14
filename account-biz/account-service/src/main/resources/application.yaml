@@ -19,6 +19,13 @@ spring:
     password: admin #ak402507979
     hikari:
       connection-timeout: 50000
-
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:5000/user/current/get
+      id: account-service
+#    client:
+#      client-id: app
+#      client-secret: app
 mybatis:
   mapper-locations: classpath*:config/mybatis/mapper/**/*.xml

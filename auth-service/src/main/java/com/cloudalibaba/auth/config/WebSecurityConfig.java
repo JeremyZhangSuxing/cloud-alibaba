@@ -1,6 +1,8 @@
 package com.cloudalibaba.auth.config;
 
+import com.cloudalibaba.auth.repository.UserRepository;
 import com.cloudalibaba.auth.service.SuperUserDerailServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,6 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 /**
  * @author suxing.zhang
  * @date 2021/8/12 21:13
@@ -20,12 +23,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    private final UserRepository userRepository;
 
-    @Override
     @Bean
+    @Override
     public UserDetailsService userDetailsService() {
-        return new SuperUserDerailServiceImpl();
+        return new SuperUserDerailServiceImpl(userRepository);
     }
 
     @Bean
