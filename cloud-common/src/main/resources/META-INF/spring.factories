@@ -1,2 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.cloudalibaba.common.handler.JsonResponseBodyAdvice
+com.cloudalibaba.common.handler.JsonResponseBodyAdvice ,\
+  com.cloudalibaba.common.interceptor.FeignRequestInterceptor
+
