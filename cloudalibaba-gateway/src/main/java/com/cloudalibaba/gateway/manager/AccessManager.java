@@ -51,9 +51,8 @@ public class AccessManager implements ReactiveAuthorizationManager<Authorization
             return Mono.just(new AuthorizationDecision(true));
         }
 
-        return authenticationMono.map(auth -> {
-            return new AuthorizationDecision(checkAuthorities(exchange, auth, requestPath));
-        }).defaultIfEmpty(new AuthorizationDecision(false));
+        return authenticationMono.map(auth -> new AuthorizationDecision(checkAuthorities(exchange, auth, requestPath)))
+                .defaultIfEmpty(new AuthorizationDecision(false));
 
     }
 
@@ -65,7 +64,7 @@ public class AccessManager implements ReactiveAuthorizationManager<Authorization
      */
     private boolean permitAll(String requestPath) {
         return permitAll.stream()
-                .filter(r -> antPathMatcher.match(r, requestPath)).findFirst().isPresent();
+                .anyMatch(r -> antPathMatcher.match(r, requestPath));
     }
 
     /**
