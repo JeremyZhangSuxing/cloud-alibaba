@@ -24,8 +24,8 @@ spring:
 
 mybatis:
   mapper-locations: classpath*:config/mybatis/mapper/**/*.xml
-logging:
-  level:
-      root: debug
+#logging:
+#  level:
+#      root: debug
 #     com.cloudalibaba.auth.mybatis.mapper : debug
 
