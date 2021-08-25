@@ -65,6 +65,7 @@ public class SecurityConfig {
         };
     }
 
+
     @Bean
     public SecurityWebFilterChain webFluxSecurityFilterChain(ServerHttpSecurity http) throws Exception {
         //token管理器

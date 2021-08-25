@@ -10,7 +10,7 @@ spring:
     gateway:
       discovery:
         locator:
-          enabled: true
+          enabled: false
       routes:
       - id: product-service
         uri: lb://product-service
@@ -31,9 +31,9 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=UTF-8&allowMutiQueries=true&serverTimezone=Asia/Shanghai
     username: root  #user01
-    password: admin #ak402507979
+    password: pass #ak402507979  admin
     hikari:
       connection-timeout: 50000
-
+debug: true
 
 
